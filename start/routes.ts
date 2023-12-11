@@ -32,8 +32,10 @@ Route.post('/about', () => {
   return 'about post'
 })
 
-Route.get('/posts/:id', ({ params }) => {
+Route.get('/posts/:id', ({ params, request }) => {
   const { id } = params
-
+  console.log(request.all().name)
   return `${id}`
-}).where('id', /d/de)
+}).where('id', Route.matchers.number())
+
+Route.group(() => {})
