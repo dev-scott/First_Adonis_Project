@@ -24,18 +24,20 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
-Route.get('/about', async ({ view }) => {
-  return 'about page'
-})
-
 Route.post('/about', () => {
   return 'about post'
 })
 
-Route.get('/posts/:id', ({ params, request }) => {
-  const { id } = params
-  console.log(request.all().name)
-  return `${id}`
-}).where('id', Route.matchers.number())
+// Route.get('/posts/:id', ({ params, request }) => {
+//   const { id } = params
+//   console.log(request.all().name)
+//   return `${id}`
+// }).where('id', Route.matchers.number())
 
-Route.group(() => {})
+Route.group(() => {
+  Route.get('/about', () => {
+    return 'about page'
+  })
+}).prefix('/api')
+
+Route.get('/posts', 'PostsController.index')
