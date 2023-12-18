@@ -28,6 +28,10 @@ Route.post('/about', () => {
   return 'about post'
 })
 
+Route.post('/test', () => {
+  return 'test post'
+})
+
 // Route.get('/posts/:id', ({ params, request }) => {
 //   const { id } = params
 //   console.log(request.all().name)
